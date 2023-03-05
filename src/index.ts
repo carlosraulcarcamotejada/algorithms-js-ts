@@ -1,11 +1,8 @@
-/**
- * This file is just a silly example to show everything working in the browser.
- * When you're ready to start on your site, clear the file. Happy hacking!
- **/
+import { solutionTS } from "./algorithms-js-ts/01_algorithm_owlish";
 
-import confetti from 'canvas-confetti';
+const inputString = "bbbaacdafe";
+const inputString2 = "aabbb";
+const inputString3 = "bbc";
+const inputString4 = "deg";
 
-confetti.create(document.getElementById('canvas') as HTMLCanvasElement, {
-  resize: true,
-  useWorker: true,
-})({ particleCount: 200, spread: 200 });
+console.log(solutionTS(inputString));
