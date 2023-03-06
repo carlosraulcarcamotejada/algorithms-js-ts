@@ -5,4 +5,4 @@ const inputString2 = "aabbb";
 const inputString3 = "bbc";
 const inputString4 = "deg";
 
-console.log(solutionTS(inputString));
+console.log(solutionTS(inputString3));

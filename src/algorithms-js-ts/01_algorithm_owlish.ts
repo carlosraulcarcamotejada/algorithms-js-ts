@@ -1,9 +1,12 @@
 export const solutionTS = (inputString: string): boolean => {
+
+
   //pass a lower case
   const inputStringLC = inputString.toLowerCase();
 
   //make it an array
-  let inputStringArray: string[] = inputStringLC.split("");
+  let inputStringArray: string[] = [...inputStringLC];
+
 
   //order the array
   inputStringArray = inputStringArray.sort((prevItem, currentItem) => {
@@ -23,32 +26,42 @@ export const solutionTS = (inputString: string): boolean => {
     String.fromCharCode(i + 97)
   );
 
+  //Do while cycle to introduce an empty space when there is no a previous character
   let index = 0;
   do {
     if (alphabet[index] < inputStringArray[index]) {
       inputStringArray.splice(index, 0, "");
     }
     index++;
-  } while (inputStringArray.length !== index);
+  } while (index !== inputStringArray.length);
 
+  //print the actual modify array
   console.log(inputStringArray);
 
+
+
+  //check out if is there a empty character
   for (let index = 0; index < inputStringArray.length; index++) {
-    if (inputStringArray[index] === "" && index < inputStringArray.length - 1) {
+    if (inputStringArray[index] === "") {
       return false;
     }
   }
 
-  let results: number[] = [];
+
+  //variables declarations:
+  let results: number[] = [];//it will contain the total amount of each letter
   let currentCount: number = 1;
   let previousLetter: string = "";
   let currentLetter: string = "";
   let nextLetter: string = "";
 
+  //Cycle to fill the array of results, that contains the total amount of each letter
   for (let index = 0; index < inputStringArray.length; index++) {
+    //set currentLetter with the current value of the iteration
+    currentLetter = inputStringArray[index];
+    //reset of variables
     previousLetter = "";
     nextLetter = "";
-    currentLetter = inputStringArray[index];
 
     if (index > 0) {
       previousLetter = inputStringArray[index - 1];
@@ -70,6 +83,7 @@ export const solutionTS = (inputString: string): boolean => {
 
   console.log(results);
 
+  //Cycle to check 
   for (let index = 0; index < results.length; index++) {
     if (index > 0) {
       if (results[index - 1] < results[index]) {
