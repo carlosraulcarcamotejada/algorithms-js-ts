@@ -1,5 +1,41 @@
-export const solutionTS = (inputString: string): boolean => {
+//HashMap Version
+export const isBeautifulString2 = (inputString: string): boolean => {
+  console.log(inputString);
 
+  //Function getHashMapInputString create a hashMap from the inputString variable
+  const getHashMapInputString = (inputString: string): Map<string, number> => {
+    const hm: Map<string, number> = new Map<string, number>();
+    [...inputString].map((currentLetter) => {
+      hm.get(currentLetter)
+        ? hm.set(currentLetter, (hm.get(currentLetter) || 0) + 1)
+        : hm.set(currentLetter, 1);
+    });
+    return hm;
+  };
+
+  //Creation of
+  const tracker: Map<string, number> = new Map<string, number>(
+    getHashMapInputString(inputString)
+  );
+
+  //Creation of variables
+  const alphaFirst: number = "a".charCodeAt(0);
+  const alphaLast: number = "z".charCodeAt(0);
+  let previousCount: number = Number.MAX_VALUE;
+
+  console.log(tracker);
+  for (let index = alphaFirst; index <= alphaLast; index++) {
+    const currentCount = tracker.get(String.fromCharCode(index)) || 0;
+    if (previousCount < currentCount) return false;
+    previousCount = currentCount;
+  }
+
+  return true;
+};
+
+//My own Version
+export const isBeautifulString = (inputString: string): boolean => {
+  const startTime = performance.now();
 
   //pass a lower case
   const inputStringLC = inputString.toLowerCase();
@@ -7,19 +43,8 @@ export const solutionTS = (inputString: string): boolean => {
   //make it an array
   let inputStringArray: string[] = [...inputStringLC];
 
-
   //order the array
-  inputStringArray = inputStringArray.sort((prevItem, currentItem) => {
-    if (prevItem < currentItem) {
-      return -1;
-    }
-    if (prevItem > currentItem) {
-      return 1;
-    }
-    return 0;
-  });
-
-  console.log(inputStringArray);
+  inputStringArray.sort();
 
   //create array of alphabet
   const alphabet: string[] = [...Array(26)].map((_, i) =>
@@ -38,8 +63,6 @@ export const solutionTS = (inputString: string): boolean => {
   //print the actual modify array
   console.log(inputStringArray);
 
-
-
   //check out if is there a empty character
   for (let index = 0; index < inputStringArray.length; index++) {
     if (inputStringArray[index] === "") {
@@ -47,9 +70,8 @@ export const solutionTS = (inputString: string): boolean => {
     }
   }
 
-
   //variables declarations:
-  let results: number[] = [];//it will contain the total amount of each letter
+  let results: number[] = []; //it will contain the total amount of each letter
   let currentCount: number = 1;
   let previousLetter: string = "";
   let currentLetter: string = "";
@@ -83,7 +105,7 @@ export const solutionTS = (inputString: string): boolean => {
 
   console.log(results);
 
-  //Cycle to check 
+  //Cycle to check
   for (let index = 0; index < results.length; index++) {
     if (index > 0) {
       if (results[index - 1] < results[index]) {
@@ -92,6 +114,8 @@ export const solutionTS = (inputString: string): boolean => {
     }
   }
 
+  const endTime = performance.now();
+  //console.log(`It took ${endTime - startTime} milliseconds`);
   return true;
 };
 
