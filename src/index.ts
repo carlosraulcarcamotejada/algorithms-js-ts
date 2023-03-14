@@ -6,6 +6,7 @@
 // const inputString4 = "deg";
 // console.log(isBeautifulString2(inputString3));
 
+
 /////=================== 002_mergeTwoList.ts ===========================
 // import { ListNode, mergeTwoList } from "./algorithms-js-ts/002_mergeTwoList";
 
@@ -42,11 +43,11 @@
 // console.log(longestCommonPrefix(vector7));
 
 // ///=================== 004_3Sum.ts ===========================
-import { threeSum } from "./algorithms-js-ts/004_3Sum";
+// import { threeSum } from "./algorithms-js-ts/004_3Sum";
 
-const nums: number[] = [-4, -1, -1, 0, 1, 2];
+// const nums: number[] = [-4, -1, -1, 0, 1, 2];
 
-console.log(threeSum(nums));
+// console.log(threeSum(nums));
 
 // ///=================== 005_romanToInteger.ts ===========================
 // import { romanToInteger } from "./algorithms-js-ts/005_RomanToInteger";
@@ -58,8 +59,8 @@ console.log(threeSum(nums));
 
 // console.log(romanToInteger(romanNumber3));
 
-// /////=================== 006_intToRoman.ts ===========================
-//import { intToRoman } from "./algorithms-js-ts/006_intToRoman";
+// ===================== 006_intToRoman.ts ===========================
+// import { intToRoman } from "./algorithms-js-ts/006_intToRoman";
 // const num1 = 1994;//MCMXCIV
 // const num2 = 3600;//MMMDC
 // const num3 = 400;//IV
@@ -71,3 +72,12 @@ console.log(threeSum(nums));
 // const num9 = 6;
 
 // console.log(intToRoman(num1));
+
+
+// ===================== 007_two_sum.ts ===========================
+import { twoSum } from "./algorithms-js-ts/007_two_sum";
+
+const nums: number[] = [2,7,11,15];
+const target:number = 9; 
+
+console.log(twoSum(nums,target));
